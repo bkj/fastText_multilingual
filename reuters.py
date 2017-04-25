@@ -1,8 +1,13 @@
+#!/usr/bin/env python
 
-import pandas as pd
+"""
+    reuters.py
+"""
+
 import numpy as np
-from sklearn.svm import LinearSVC
+import pandas as pd
 from sklearn import metrics
+from sklearn.svm import LinearSVC
 
 from fasttext import FastVector
 
