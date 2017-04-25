@@ -26,8 +26,8 @@ dicts = {
     "target" : FastVector(vector_file='./data/wiki.%s.vec' % target_lang),
 }
 
-dicts['source'].apply_transform('alignment_matrices/%s.txt' % source_lang)
-dicts['target'].apply_transform('alignment_matrices/%s.txt' % target_lang)
+dicts['source'].apply_transform('./alignment_matrices/%s.txt' % source_lang)
+dicts['target'].apply_transform('./alignment_matrices/%s.txt' % target_lang)
 
 # --
 # Load Reuters
@@ -61,9 +61,9 @@ for k in ['source', 'target']:
 # --
 # Transferring classifiers across languages
 
-svc = LinearSVC(C=0.1).fit(X['source']['train'], y['source']['train'])
+svc = LinearSVC().fit(X['source']['train'], y['source']['train'])
 
-metrics.accuracy_score(y['source']['valid'] svc.predict(X['source']['valid']))
+metrics.accuracy_score(y['source']['valid'], svc.predict(X['source']['valid']))
 metrics.accuracy_score(y['target']['valid'], svc.predict(X['target']['valid']))
 
 # en -> de: Error rate is ~ 4x single language training (0.96 -> 0.80)
